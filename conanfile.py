@@ -1,3 +1,5 @@
+import shutil
+
 from conans import ConanFile
 from conans import tools
 import os
@@ -42,7 +44,7 @@ class BoostConan(ConanFile):
             self.options.remove("fPIC")
 
     def configure(self):
-        if not self.options.without_iostreams and not self.options.header_only:
+        if not self.options.header_only:
             self.requires("bzip2/1.0.6@conan/stable")
             self.options["bzip2"].shared = False
             
